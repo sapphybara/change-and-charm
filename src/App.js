@@ -1,25 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
+import Navbar from './Navbar/Navbar';
+import React from 'react';
+import logo from './Branding/logo.svg';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const routes = {
+  'home': {
+    key: 'home',
+    label: 'Home'
+  },
+  'about': {
+    key: 'about',
+    label: 'About'
+  }
+};
 
-export default App;
+export default class App extends React.Component {
+  
+  state = { activePage: routes.home };
+  
+  render() {
+    return (
+      <div className="App">
+        <Navbar activePage={this.state.activePage}/>
+        <h2>Here is a header</h2>
+        <br/>
+        <p>Heyyy</p>
+        <img alt={'logo'} src={logo} style={{'width': '500px'}}/>
+      </div>
+    );
+  }
+};
