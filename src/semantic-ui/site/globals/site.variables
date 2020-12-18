@@ -1,15 +1,16 @@
 /*******************************
      User Global Variables:
-     https://github.com/Semantic-Org/
-       Semantic-UI/blob/master/src/
-       themes/default/globals/
-       site.variables
+     https://github.com/Semantic-Org/Semantic-UI/blob/master/src/themes/default/globals/site.variables
 *******************************/
 
 @primaryColor: #7370a3;
-@pageBackground: #d4c9f5;
+@pageBackground: @violet;
 @secondaryColor: #d7bea8;
+
 @textColor: #362417d9;
+@selectedTextColor: @primaryColor;
 
 @green: #3a4a3f;
+@violet: #d4c9f5;
 @linkColor: @green;
+@tan: #d7bea8;
