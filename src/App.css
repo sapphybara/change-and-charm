@@ -1,3 +1,15 @@
 .App {
-  text-align: center;
+    text-align: center;
+}
+
+
+/* make the navbar not flow into main content */
+.Navbar {
+    height: 40px;
+}
+
+.MainContent {
+    margin-top: 20px;
+    height: calc(100vh - 60px);
+    position: relative;
 }

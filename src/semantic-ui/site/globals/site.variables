@@ -10,3 +10,6 @@
 @pageBackground: #d4c9f5;
 @secondaryColor: #d7bea8;
 @textColor: #362417d9;
+
+@green: #3a4a3f;
+@linkColor: @green;

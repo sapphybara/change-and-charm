@@ -1,31 +1,33 @@
 import './App.css';
-import Navbar from './Navbar/Navbar';
+import Navbar from './navbar/Navbar.jsx';
 import React from 'react';
-import logo from './Branding/logo.svg';
-
-const routes = {
-  'home': {
-    key: 'home',
-    label: 'Home'
-  },
-  'about': {
-    key: 'about',
-    label: 'About'
-  }
-};
+import ROUTES from './utils/Routes';
 
 export default class App extends React.Component {
   
-  state = { activePage: routes.home };
+  state = {
+    activePage: ROUTES[0].name, // the current page, used for the router
+  };
+  
+  /**
+   * changes current page
+   * @param activePage name of the new page that was selected
+   */
+  handlePageChange = activePage => {
+    this.setState({ activePage });
+  };
   
   render() {
     return (
       <div className="App">
-        <Navbar activePage={this.state.activePage}/>
-        <h2>Here is a header</h2>
-        <br/>
-        <p>Heyyy</p>
-        <img alt={'logo'} src={logo} style={{'width': '500px'}}/>
+        <div className={'Navbar'}>
+          <Navbar activePage={this.state.activePage} onPageChange={this.handlePageChange}/>
+        </div>
+        
+        <div className={'MainContent'}>
+          <h2>Change & Charm</h2>
+          <p>The bite-sized makeover botique</p>
+        </div>
       </div>
     );
   }
