@@ -2,8 +2,9 @@ import React from 'react';
 import { Menu } from 'semantic-ui-react';
 import ROUTES from '../utils/Routes';
 import './navbar.css';
+import { Link } from 'react-router-dom';
 
-export default class Navbar extends React.Component {
+class Navbar extends React.Component {
   
   /**
    * handles menu changing
@@ -27,7 +28,7 @@ export default class Navbar extends React.Component {
       if (page.icon) {
         return (
           <Menu.Item name={page.name} onClick={this.handleMenuItemClick} key={page.key}
-                     active={activePage === page.name} className={'imageMenu'} header>
+                     active={activePage === page.name} className={'imageMenu'} header as={Link} to={'/'}>
             <img src={page.icon.src} alt={page.icon.alt} className={'image'}/>
             {page.label}
           </Menu.Item>
@@ -35,7 +36,7 @@ export default class Navbar extends React.Component {
       } else {
         return (
           <Menu.Item name={page.name} active={activePage === page.name} onClick={this.handleMenuItemClick}
-                     key={page.key} position={page.position}>
+                     key={page.key} position={page.position} as={Link} to={'/' + page.name}>
             {page.label}
           </Menu.Item>);
       }
@@ -49,4 +50,6 @@ export default class Navbar extends React.Component {
       </Menu>
     );
   };
-};
+}
+
+export default Navbar;

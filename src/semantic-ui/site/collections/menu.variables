@@ -1,3 +1,7 @@
 /*******************************
     User Variable Overrides
 *******************************/
+
+@activeItemBackground: @violet;
+@activeHoverItemBackground: @violet;
+@hoverItemBackground: @tan;
