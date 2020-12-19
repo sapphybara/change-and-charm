@@ -4,6 +4,8 @@ import React from 'react';
 import ROUTES from './utils/Routes';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
+export const PAGE_TITLE = ' | Change & Charm';
+
 export default class App extends React.Component {
   
   state = {
@@ -32,7 +34,7 @@ export default class App extends React.Component {
                 const path = route.name === 'home' ? '/' : '/' + route.name;
                 const ComponentName = route.component;
                 // can pass props into <ComponentName /> below
-                return <Route exact path={path} key={route.key} render={() => <ComponentName />}/>
+                return <Route exact path={path} key={route.key} render={() => <ComponentName name={route.label} />}/>
               })}
             </Switch>
           </div>
