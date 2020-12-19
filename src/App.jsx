@@ -33,7 +33,6 @@ export default class App extends React.Component {
               {ROUTES.map(route => {
                 const path = route.name === 'home' ? '/' : '/' + route.name;
                 const ComponentName = route.component;
-                // can pass props into <ComponentName /> below
                 return <Route exact path={path} key={route.key} render={() => <ComponentName name={route.label} />}/>
               })}
             </Switch>
