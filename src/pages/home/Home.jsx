@@ -1,13 +1,5 @@
-import React from 'react';
+import { PageBase } from '../PageBase.tsx';
 
-export default class Home extends React.Component {
-  
-  render() {
-    return (
-      <div>
-        <h2>Change and Charm - Home</h2>
-        The makeover boutique
-      </div>
-    );
-  }
+export default class Home extends PageBase {
+
 }
