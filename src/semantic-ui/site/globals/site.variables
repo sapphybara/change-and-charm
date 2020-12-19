@@ -6,11 +6,12 @@
 @primaryColor: #7370a3;
 @pageBackground: @violet;
 @secondaryColor: #d7bea8;
+@linkColor: @green;
+@borderColor: @primaryColor;
 
 @textColor: #362417d9;
 @selectedTextColor: @primaryColor;
 
 @green: #3a4a3f;
 @violet: #d4c9f5;
-@linkColor: @green;
 @tan: #d7bea8;
