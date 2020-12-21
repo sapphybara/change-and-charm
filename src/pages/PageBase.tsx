@@ -12,14 +12,14 @@ export abstract class PageBase extends React.Component<Props> {
    * set the title of the pages based on their name
    */
   componentDidMount() {
-    document.title = this.props.name + PAGE_TITLE;
+    document.title = `${this.props.name} | ${PAGE_TITLE}`;
   }
   
   render() {
     return (
       <div>
-        <h2>Change and Charm - {this.props.name}</h2>
-        The makeover boutique
+        <h2 className={'brand-script'}>Change and Charm - {this.props.name}</h2>
+        The bite-sized makeover boutique
       </div>
     );
   }

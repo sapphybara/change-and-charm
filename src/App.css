@@ -1,5 +1,8 @@
+@import './visuals/branding/fonts.css';
+
 .App {
     text-align: center;
+    font-family: 'Open Sans', serif;
 }
 
 
@@ -12,4 +15,9 @@
     margin-top: 20px;
     height: calc(100vh - 60px);
     position: relative;
+}
+
+.brand-script {
+    font-family: 'Italianno', cursive, serif;
+    font-weight: normal;
 }

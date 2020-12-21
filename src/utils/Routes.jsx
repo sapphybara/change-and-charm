@@ -1,5 +1,5 @@
 import { SnakeToCapital } from './HumanReadableText';
-import logo from '../branding/logo.svg';
+import logo from '../visuals/branding/logo.svg';
 
 // all the page components
 import Home from '../pages/home/Home';

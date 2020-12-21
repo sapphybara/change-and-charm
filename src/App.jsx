@@ -4,7 +4,7 @@ import React from 'react';
 import ROUTES from './utils/Routes';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-export const PAGE_TITLE = ' | Change & Charm';
+export const PAGE_TITLE = 'Change & Charm';
 
 export default class App extends React.Component {
   
