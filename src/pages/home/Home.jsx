@@ -1,7 +1,7 @@
 import { PageBase } from '../PageBase.tsx';
 import * as React from 'react';
 import './Home.css';
-import { PAGE_TITLE } from '../../App';
+import { PAGE_TITLE } from '../../App.jsx';
 
 export default class Home extends PageBase {
   render() {

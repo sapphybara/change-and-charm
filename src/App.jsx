@@ -7,37 +7,64 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 export const PAGE_TITLE = 'Change & Charm';
 
 export default class App extends React.Component {
-  
   state = {
     activePage: ROUTES[0].name, // the current page, used for the router
+    bites: [],
   };
-  
+
+  componentDidMount() {
+    this.getBites();
+  }
+
   /**
    * changes current page
    * @param activePage name of the new page that was selected
    */
-  handlePageChange = activePage => {
+  handlePageChange = (activePage) => {
     this.setState({ activePage });
   };
-  
+
+  /**
+   * load bites from backend
+   */
+  getBites = () => {
+    fetch(`/api/bites`)
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.status !== 'success') {
+          return console.error(`server returned code ${res.status || 404}`);
+        }
+        this.setState({ ...res.data });
+      });
+  };
+
   render() {
     return (
       <Router>
-        <div className="App">
+        <div className='App'>
           <div className={'Navbar'}>
-            <Navbar activePage={this.state.activePage} onPageChange={this.handlePageChange}/>
+            <Navbar
+              activePage={this.state.activePage}
+              onPageChange={this.handlePageChange}
+            />
           </div>
-    
+
           <div className={'MainContent'}>
             <Switch>
-              {ROUTES.map(route => {
+              {ROUTES.map((route) => {
                 const path = route.name === 'home' ? '/' : '/' + route.name;
                 const ComponentName = route.component;
-                return <Route exact path={path} key={route.key} render={() => <ComponentName name={route.label} />}/>
+                return (
+                  <Route
+                    exact
+                    path={path}
+                    key={route.key}
+                    render={() => <ComponentName name={route.label} />}
+                  />
+                );
               })}
             </Switch>
           </div>
-    
         </div>
       </Router>
     );
