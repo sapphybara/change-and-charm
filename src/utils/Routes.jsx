@@ -18,41 +18,48 @@ const contactKey = 'contact_us';
 const loginKey = 'login';
 
 // the different pages for the router, rendered in the navbar
-const ROUTES = [{
-  key: homeKey,
-  name: homeKey,
-  label: SnakeToCapital(homeKey),
-  icon: {
-    src: logo,
-    alt: 'logo'
+const ROUTES = [
+  {
+    key: homeKey,
+    name: homeKey,
+    label: SnakeToCapital(homeKey),
+    icon: {
+      src: logo,
+      alt: 'logo',
+    },
+    component: Home,
   },
-  component: Home
-}, {
-  key: aboutKey,
-  name: aboutKey,
-  label: SnakeToCapital(aboutKey),
-  component: About
-}, {
-  key: servicesKey,
-  name: servicesKey,
-  label: SnakeToCapital(servicesKey),
-  component: Services
-}, {
-  key: bookKey,
-  name: bookKey,
-  label: SnakeToCapital(bookKey),
-  component: Book
-}, {
-  key: contactKey,
-  name: contactKey,
-  label: SnakeToCapital(contactKey),
-  component: Contact
-}, {
-  key: loginKey,
-  name: loginKey,
-  label: SnakeToCapital(loginKey),
-  position: 'right',
-  component: Login
-}];
+  {
+    key: aboutKey,
+    name: aboutKey,
+    label: SnakeToCapital(aboutKey),
+    component: About,
+  },
+  {
+    key: servicesKey,
+    name: servicesKey,
+    label: SnakeToCapital(servicesKey),
+    component: Services,
+  },
+  {
+    key: bookKey,
+    name: bookKey,
+    label: SnakeToCapital(bookKey),
+    component: Book,
+  },
+  {
+    key: contactKey,
+    name: contactKey,
+    label: SnakeToCapital(contactKey),
+    component: Contact,
+  },
+  {
+    key: loginKey,
+    name: loginKey,
+    label: SnakeToCapital(loginKey),
+    position: 'right',
+    component: Login,
+  },
+];
 
 export default ROUTES;
