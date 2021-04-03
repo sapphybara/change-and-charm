@@ -1,70 +1,72 @@
 import React from 'react';
-import { Menu } from 'semantic-ui-react';
-import ROUTES from '../utils/Routes';
-import './navbar.css';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { Button, Icon, Menu } from 'semantic-ui-react';
+import startCase from 'lodash/startCase';
 
-class Navbar extends React.Component {
-  /**
-   * handles menu changing
-   * @param e event
-   * @param name name of the menu item clicked
-   */
-  handleMenuItemClick = (e, { name }) => {
-    this.props.onPageChange(name);
-  };
-
+/**
+ *
+ * @param {[]} NAVBAR_ROUTES the routes for the navbar
+ * @param {React.ReactNode} children props.children
+ * @return {JSX.Element} navbar component with navlinks around the routes defined in NAVBAR_ROUTES
+ * @constructor
+ */
+function Navbar({ NAVBAR_ROUTES, children }) {
   /**
    * renders the Menu items from the routes
-   * @returns {React.ReactNode}
+   * @returns {JSX.Element}
    */
-  renderMenuItems = () => {
-    // the page we are on
-    const activePage = this.props.activePage;
-
-    return ROUTES.map((page) => {
+  const renderMenuLinks = () =>
+    NAVBAR_ROUTES.map((page) => {
       // create an icon for the home tab
       if (page.icon) {
         return (
           <Menu.Item
             name={page.name}
-            onClick={this.handleMenuItemClick}
-            key={page.key}
-            active={activePage === page.name}
-            className={'imageMenu'}
+            key={page.name}
+            as={NavLink}
+            to={page.path}
+            activeClassName='active'
             header
-            as={Link}
-            to={'/'}
+            exact
           >
-            <img src={page.icon.src} alt={page.icon.alt} className={'image'} />
-            {page.label}
-          </Menu.Item>
-        );
-      } else {
-        return (
-          <Menu.Item
-            name={page.name}
-            active={activePage === page.name}
-            onClick={this.handleMenuItemClick}
-            key={page.key}
-            position={page.position}
-            as={Link}
-            to={'/' + page.name}
-          >
-            {page.label}
+            <img src={page.icon.src} alt={page.icon.alt} />
+            {startCase(page.name)}
           </Menu.Item>
         );
       }
-    });
-  };
 
-  render() {
-    return (
-      <Menu defaultActiveIndex={0} fixed={'top'} color={'green'}>
-        {this.renderMenuItems()}
-      </Menu>
-    );
-  }
+      return (
+        <Menu.Item
+          name={page.name}
+          key={page.name}
+          as={NavLink}
+          to={page.path}
+          activeClassName='active'
+        >
+          {startCase(page.name)}
+        </Menu.Item>
+      );
+    });
+
+  return (
+    <div className='center-align relative'>
+      <div className='navbar'>
+        <Menu fixed='top' color='green'>
+          {renderMenuLinks()}
+          <Menu.Item position='right' key='auth'>
+            <Button icon>
+              <Icon name='sign in' />
+            </Button>
+            <Button icon compact>
+              <Icon name='sign-out' />
+            </Button>
+          </Menu.Item>
+        </Menu>
+      </div>
+
+      <div className='main-content'>{children}</div>
+    </div>
+  );
 }
 
 export default Navbar;

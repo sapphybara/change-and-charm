@@ -1,0 +1,135 @@
+@import '../../semantic-ui/site/globals/site.variables';
+@import 'variables';
+@import 'mixins';
+@import 'quick-customization';
+
+/**
+PAGE SETUP
+------------------------------------------------------------------------------------------------------------------------
+ */
+
+/* load the default fonts from mixins */
+@font-face {
+  .font-names;
+}
+
+/* brand cursive font */
+.brand-script {
+  font-family : 'Satisfy', cursive, serif !important;
+  font-weight : normal;
+}
+
+/* make the navbar not flow into main content */
+.navbar {
+  height : @navbar-height;
+}
+
+.main-content {
+  //margin-top : 20px;
+  height : @main-content-height;
+}
+
+/**
+SINGULAR BITE CUSTOMIZATION
+------------------------------------------------------------------------------------------------------------------------
+ */
+
+/* create an opaque picture to be used in an absolute position with behind the bite info */
+.singular-bite {
+  .background-image {
+    opacity : .1;
+    left    : 0;
+    right   : 0;
+
+    img {
+      /* force the image to be at a decent size for the background */
+      min-height : @main-content-height;
+      max-height : 150vh;
+      min-width  : 100%;
+      object-fit : cover;
+    }
+  }
+
+  .right-align.description {
+    p {
+      float : right;
+    }
+  }
+}
+
+/**
+CUSTOM HEADER STYLING
+------------------------------------------------------------------------------------------------------------------------
+ */
+
+/* default page header */
+.ui.header.custom-header {
+  color       : @primaryColor;
+  font-weight : lighter;
+  position    : relative;
+
+  .primary {
+    /* let the header be of less importance on the page with setting secondary=true */
+
+    h1 {
+      padding   : 3rem 0;
+      font-size : 4em;
+    }
+
+    span {
+      font-size : 1.4em;
+    }
+  }
+
+  .secondary {
+    h1 {
+      font-size : 2.5em
+    }
+  }
+
+  .divider.divider-margin {
+    /* give divider padding */
+    margin : 1.5em 0 3em;
+  }
+}
+
+/**
+CUSTOM CARD STYLING
+------------------------------------------------------------------------------------------------------------------------
+ */
+
+.card-header {
+  color         : @primaryColor;
+  margin-bottom : 12px;
+}
+
+.card-footer {
+  bottom : 0;
+  left   : 50%;
+  right  : 50%;
+}
+
+/**
+BITES PAGE STYLING
+------------------------------------------------------------------------------------------------------------------------
+ */
+
+/* put padding around card groups */
+.ui.cards.card-padding {
+  padding : 1rem;
+
+  .content {
+    .bite-content {
+      img {
+        //min-height: 300px;
+        //max-height: 300px;
+      }
+    }
+  }
+}
+
+/* give bite cards padding for reviews to show */
+.ui.cards > .ui.card.bite-card {
+  padding  : 1rem;
+  position : relative;
+}

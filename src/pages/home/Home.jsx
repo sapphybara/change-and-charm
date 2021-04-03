@@ -1,15 +1,25 @@
-import { PageBase } from '../PageBase.tsx';
-import * as React from 'react';
-import './Home.css';
-import { PAGE_TITLE } from '../../App.jsx';
+import React from 'react';
+import { Button } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
+import CustomHeader from '../page-elements/header/CustomHeader';
 
-export default class Home extends PageBase {
-  render() {
-    return (
-      <div>
-        <h1 className={'brand-script'}>{PAGE_TITLE}</h1>
-        The bite-sized makeover boutique
-      </div>
-    );
-  }
+/**
+ * homepage for the app
+ * @return {JSX.Element}
+ * @constructor
+ */
+function Home() {
+  return (
+    <div>
+      <CustomHeader
+        mainContent={process.env.REACT_APP_PAGE_TITLE}
+        subHeader='The bite-sized makeover boutique'
+      />
+      <Button as={Link} to='/bites'>
+        Bites!
+      </Button>
+    </div>
+  );
 }
+
+export default Home;
