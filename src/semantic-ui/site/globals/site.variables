@@ -12,6 +12,8 @@
 @textColor: #362417d9;
 @selectedTextColor: @primaryColor;
 
+/* customize semantic colors */
 @green: #3a4a3f;
 @violet: #d4c9f5;
 @tan: #d7bea8;
+@purple: @primaryColor;

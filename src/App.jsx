@@ -1,45 +1,50 @@
-import './App.css';
-import Navbar from './navbar/Navbar.jsx';
-import React from 'react';
-import ROUTES from './utils/Routes';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Navbar from './navbar/Navbar';
+import RenderRoutes, {
+  NAVBAR_ROUTES,
+} from './pages/page-elements/routes/RenderRoutes';
+import BitesContext from './utils/contexts/bitesContext';
+import './styles/less/app.less';
 
-export const PAGE_TITLE = ' | Change & Charm';
+/**
+ * a component which controlls the global state of the app and renders the routes
+ * @return {JSX.Element} router component with dynamic routes, which in turn can have nested routes on them
+ * @constructor
+ */
+function App() {
+  const [bites, setBites] = useState([]);
 
-export default class App extends React.Component {
-  
-  state = {
-    activePage: ROUTES[0].name, // the current page, used for the router
-  };
-  
   /**
-   * changes current page
-   * @param activePage name of the new page that was selected
+   * load bites from backend
    */
-  handlePageChange = activePage => {
-    this.setState({ activePage });
+  const getBites = async () => {
+    let response = await fetch(`${process.env.REACT_APP_PROXY}/api/bites`);
+    response = await response.json();
+    if (response.status !== 'success') {
+      throw new Error(`server returned code ${response.statusCode || 404}`);
+    }
+    const { data } = response.data;
+    return data;
   };
-  
-  render() {
-    return (
-      <Router>
-        <div className="App">
-          <div className={'Navbar'}>
-            <Navbar activePage={this.state.activePage} onPageChange={this.handlePageChange}/>
-          </div>
-    
-          <div className={'MainContent'}>
-            <Switch>
-              {ROUTES.map(route => {
-                const path = route.name === 'home' ? '/' : '/' + route.name;
-                const ComponentName = route.component;
-                return <Route exact path={path} key={route.key} render={() => <ComponentName name={route.label} />}/>
-              })}
-            </Switch>
-          </div>
-    
-        </div>
-      </Router>
-    );
-  }
+
+  /**
+   * equivalent to componentDidMount
+   */
+  useEffect(() => {
+    // get the bites when page loads
+    getBites().then(setBites);
+  }, []);
+
+  return (
+    <Router>
+      <Navbar NAVBAR_ROUTES={NAVBAR_ROUTES}>
+        <BitesContext.Provider value={bites}>
+          <RenderRoutes />
+        </BitesContext.Provider>
+      </Navbar>
+    </Router>
+  );
 }
+
+export default App;
