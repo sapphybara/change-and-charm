@@ -83,12 +83,17 @@ CUSTOM HEADER STYLING
 
   .secondary {
     h1 {
-      font-size : 2.5em
+      font-size : 2.5em;
+
+      p.bite-name {
+        /* confine the bite names to no more than 2 lines long */
+        .max-lines-2;
+      }
     }
   }
 
   .divider.divider-margin {
-    /* give divider padding */
+    /* give divider space */
     margin : 1.5em 0 3em;
   }
 }
@@ -104,6 +109,7 @@ CUSTOM CARD STYLING
 }
 
 .card-footer {
+  /* allow the cards to have a footer at the very bottom */
   bottom : 0;
   left   : 50%;
   right  : 50%;
@@ -120,9 +126,29 @@ BITES PAGE STYLING
 
   .content {
     .bite-content {
-      img {
-        //min-height: 300px;
-        //max-height: 300px;
+      .relative.bite-image {
+        /* make all the images have an aspect ratio of exactly 3:2, so their height in the cards is the same */
+
+        img {
+          .absolute;
+          left       : 0;
+          top        : 0;
+          width      : 100%;
+          height     : 100%;
+          object-fit : cover;
+        }
+      }
+
+      div.relative.bite-image:after {
+        display        : block;
+        content        : '';
+        /* 3:2 aspect ratio */
+        padding-bottom : 150%;
+      }
+
+      h2.bite-name {
+        /* capitalize the summary of the bite*/
+        .capitalize;
       }
     }
   }

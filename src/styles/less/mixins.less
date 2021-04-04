@@ -5,3 +5,12 @@
     src: url('@{font-path}/satisfy-regular-webfont.woff2') format('woff2'), url('@{font-path}/satisfy-regular-webfont.woff') format('woff');
   }
 }
+
+.max-lines-2 {
+  /* force text to not overflow 2 lines, but rather just do an ellipses */
+  overflow           : hidden;
+  text-overflow      : ellipsis;
+  display            : -webkit-box;
+  -webkit-line-clamp : 2; /* number of lines to show */
+  -webkit-box-orient : vertical;
+}

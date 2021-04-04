@@ -3,15 +3,21 @@ this file contains classname to quickly style elements in common ways
 ------------------------------------------------------------------------------------------------------------------------
  */
 
+.flex {
+  display : flex;
+}
+
 .center-align {
   text-align : center;
 }
 
 .center-items {
+  .flex;
   align-items : center;
 }
 
 .justify-center {
+  .flex;
   justify-content: center;
 }
 
@@ -33,10 +39,6 @@ this file contains classname to quickly style elements in common ways
 
 .absolute {
   position : absolute;
-}
-
-.flex {
-  display : flex;
 }
 
 .float-right {

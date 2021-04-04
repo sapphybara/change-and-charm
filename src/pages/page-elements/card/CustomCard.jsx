@@ -38,7 +38,7 @@ function CustomCard({ Header, Content, Description, Footer, options }) {
       </Card.Description>
 
       <br />
-      <footer className='flex justify-center absolute card-footer'>
+      <footer className='justify-center absolute card-footer'>
         <Footer />
       </footer>
     </Card>

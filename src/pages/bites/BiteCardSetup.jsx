@@ -10,7 +10,7 @@ import Reviews from './reviews/Reviews';
  */
 export const BiteHeader = ({ name, duration, price }) => (
   <CustomHeader
-    mainContent={name}
+    mainContent={<p className='bite-name'>{name}</p>}
     subHeader={<p>{`${duration} minutes | $${price}`}</p>}
     secondary
   />
@@ -22,8 +22,11 @@ export const BiteHeader = ({ name, duration, price }) => (
  */
 export const BiteContent = ({ photo: { alt, path: imgSrc }, summary }) => (
   <div className='bite-content'>
-    <Image src={`/img/bites/${imgSrc}`} alt={alt} rounded />
-    <h2 className='brand-script' style={{ color: '@green' }}>
+    <div className='relative bite-image'>
+      <Image src={`/img/bites/${imgSrc}`} alt={alt} rounded />
+    </div>
+    {/* use semantic green site variable instead of the default 👇 html green */}
+    <h2 className='brand-script bite-name' style={{ color: '@green' }}>
       {summary}
     </h2>
   </div>
