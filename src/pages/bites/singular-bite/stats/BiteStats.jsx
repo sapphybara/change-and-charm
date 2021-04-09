@@ -15,7 +15,7 @@ export default function BiteStats({ bite }) {
     <Segment>
       <Grid columns={2} divided>
         <Grid.Column>
-          <div className='size-of-parent center-items'>
+          <div className='height-of-parent center-items'>
             <Statistic.Group horizontal color='purple' size='small'>
               <Statistic>
                 <Statistic.Value>{price}</Statistic.Value>
@@ -31,11 +31,8 @@ export default function BiteStats({ bite }) {
           </div>
         </Grid.Column>
 
-        <Grid.Column className='size-of-parent'>
-          <div
-            className='right-align description center-items'
-            style={{ float: 'right' }}
-          >
+        <Grid.Column>
+          <div className='right-align description center-items float-right height-of-parent'>
             <p>{bite.description}</p>
           </div>
         </Grid.Column>

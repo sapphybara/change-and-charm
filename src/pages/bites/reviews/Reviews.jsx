@@ -1,5 +1,6 @@
 import React from 'react';
 import { Icon } from 'semantic-ui-react';
+import HalfStar from '../../page-elements/custom-icons/HalfStar';
 
 const numReviews = 5;
 /**
@@ -32,19 +33,7 @@ function Reviews({ bite }) {
 
     // add half a star if necessary
     if (!Number.isInteger(starsRoundedToHalf)) {
-      stars.push(
-        <div className='relative' key='half_star'>
-          <Icon name='star half full' color='green' key='half_full_star' />
-          <Icon
-            name='star half outline'
-            key='half_empty_star'
-            color='green'
-            flipped='horizontally'
-            className='absolute'
-            fitted
-          />
-        </div>
-      );
+      stars.push(<HalfStar key='half_star' />);
     }
 
     // make sure there are exactly 5 stars returned
